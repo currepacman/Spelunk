@@ -1,52 +1,101 @@
 class Avatar {
-  int px;
-  int py;
-  int ps;
+  int ax;
+  int ay;
+  int as;
 
-  Avatar(int x, int y, int s) {
-    px = x;
-    py = y;
-    ps = s;
+  Avatar(int s) {
+
+    as = s;
   }
 
-  void drawAvatar() {
+  void drawAvatar(int x, int y) {
+    ax = x;
+    ay = y;
     fill(100, 100, 100);
-    rect(px, py, ps, ps, 45);
+    rect(ax, ay, as, as, 45);
   }
 
   void keyPressed() {
     if (keyPressed) {
       stroke(255, 255, 255);
       fill(255, 255, 255);
-      
 
       if (key == 'd') {
-        //px-=40;
-        translate(40, 0);
-        mapOrigin-=40;
-        delay(150);
-
-        print('d');
+        if (mainroom == true) {
+          if (wallm3.checkRightMoveInto(px, py)) {
+            if (wallm5.checkRightMoveInto(px, py)) {
+              //mapOriginX-=40;
+              px+=40;
+              delay(100);
+              print('d');
+            }
+          }
+        }
+        if(sideroom1 == true) {
+          if(walls4.checkRightMoveInto(px,py)) {
+            //mapOriginX-=40;
+            px+=40;
+            delay(100);
+            print('d');
+          }
+        }
       }
       if (key == 'a') {
-        //px+=40;
-        translate(-40, 0);
-        mapOrigin+=40;
-        delay(150);
-        
-        print('a');
+        if (mainroom == true) {
+          if (wallm1.checkLeftMoveInto(px, py)) {
+            if (wallm5.checkLeftMoveInto(px, py)) {
+              //mapOriginX+=40;
+              px-=40;
+              delay(100);
+              print('a');
+            }
+          }
+        }
+        if(sideroom1 == true) {
+          if(walls1.checkLeftMoveInto(px,py)) {
+            //mapOriginX+=40;
+            px-=40;
+            delay(100);
+            print('a');
+          }
+        }
       }
       if (key == 'w') {
-        //py+=40;
-        delay(150);
-        translate(0, -40);
-        print('w');
+        if (mainroom == true) {
+          if (wallm2.checkUpMoveInto(px, py)) {
+            //mapOriginY+=40;
+            py-=40;
+            delay(100);
+            print('w');
+          }
+        }
+        if(sideroom1 == true) {
+          if(walls2.checkUpMoveInto(px,py)) {
+            
+            py-=40;
+            //mapOriginY+=40;
+            delay(100);
+            print('a');
+          }
+        }
       }
       if (key == 's') {
-        //py-=40;
-        delay(150);
-        translate(0, 40);
-        print('s');
+        if (mainroom == true) {
+          if (wallm4.checkDownMoveInto(px, py)) {
+            //mapOriginY-=40;
+            py+=40;
+            delay(100);
+            print('s');
+          }
+        }
+        if(sideroom1 == true) {
+          if(walls3.checkDownMoveInto(px,py)) {
+            //mapOriginY-=40;
+            py+=40;
+            delay(100);
+            print('a');
+          }
+        }
       }
     }
   }
