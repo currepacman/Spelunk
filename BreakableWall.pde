@@ -1,4 +1,4 @@
-class Wall {
+class BreakableWall {
 
   int wx;
   int wy;
@@ -6,9 +6,12 @@ class Wall {
   int ww;
   int prevX;
   int prevY;
+  boolean breakable1 = true;
+  boolean breakable2 = true;
+  boolean breakable3 = true;
+  boolean breakable4 = true;
 
-
-  Wall() {
+  BreakableWall() {
   }
 
   void drawWall(int x, int y, int l, int w) { 
