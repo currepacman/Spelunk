@@ -8,62 +8,59 @@ class Wall {
   int prevY;
 
 
-  Wall(int x, int y, int l, int w) {
-    wx = x;
-    wy = y;
-    wl  = l;
-    ww = w;
+  Wall() {
   }
 
-  void drawWall(int q, int p) { 
-    wx  = q;
-    wy = p;
+  void drawWall(int x, int y, int l, int w) { 
+    wx  = x;
+    wy = y;
+    wl = l;
+    ww = w;
     fill(139, 69, 19);
     rect(wx, wy, wl, ww);
   }
-  
+
   boolean checkLeftMoveInto(int px, int py) {
     prevX = px;
     prevY = py;
-    
-      if(prevX - 40 > wx && prevX - 40 < wx + wl) {
+    if (prevY >= wy && prevY <= wy + ww) {
+      if (prevX - 40 > wx && prevX - 40 < wx + wl) {
         return false;
       }
+    }
     return true;
   }
 
   boolean checkRightMoveInto(int px, int py) {
     prevX = px;
     prevY = py;
-    
+    if (prevY >= wy && prevY <= wy + ww) {
       if (prevX + 40 > wx && prevX + 40 < wx + wl) {
         return false;
       }
+    }
     return true;
   }
-  
-    boolean checkUpMoveInto(int px, int py) {
+
+  boolean checkUpMoveInto(int px, int py) {
     prevX = px;
     prevY = py;
-    
+    if (prevX >= wx && prevX <= wx + wl) {
       if (prevY - 40 > wy && prevY - 40 < wy + ww) {
         return false;
       }
+    }
     return true;
   }
-  
-    boolean checkDownMoveInto(int px, int py) {
+
+  boolean checkDownMoveInto(int px, int py) {
     prevX = px;
     prevY = py;
-    
+    if (prevX >= wx && prevX <= wx + wl) {
       if (prevY + 40 > wy && prevY + 40 < wy + ww) {
         return false;
       }
+    }
     return true;
   }
-  
-  
-  
-  
-  
 }
